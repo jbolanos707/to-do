@@ -6,6 +6,16 @@ describe(Task) do
     it("is empty at first") do
       expect(Task.all()).to(eq([]))
     end
+
+    it("returns the tasks in due date order") do
+      task1 = Task.new({:description => "learn SQL", :list_id => 1, :due_date => '2015-05-01'})
+      task1.save()
+      task2 = Task.new({:description => "study", :list_id => 1, :due_date => '2015-05-03'})
+      task2.save()
+      task3 = Task.new({:description => "wash the dog", :list_id => 1, :due_date => '2015-05-02'})
+      task3.save()
+      expect(Task.all()).to(eq([task1, task3, task2]))
+    end
   end
 
   describe("#description") do

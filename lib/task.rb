@@ -8,7 +8,7 @@ class Task
   end
 
   define_singleton_method(:all) do
-    returned_tasks = DB.exec("SELECT * FROM task;")
+    returned_tasks = DB.exec("SELECT * FROM task ORDER BY due_date ASC;")
     tasks = []
     returned_tasks.each() do |task|
       description = task.fetch("description")
