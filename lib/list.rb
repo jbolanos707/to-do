@@ -1,9 +1,10 @@
 class List
-  attr_reader(:description, :id)
+  attr_reader(:description, :id, :tasks)
 
   define_method(:initialize) do |attributes|
     @description = attributes.fetch(:description)
     @id = attributes.fetch(:id)
+    @tasks = []
   end
 
   define_singleton_method(:all) do
@@ -24,5 +25,9 @@ class List
 
   define_method(:==) do |another_list|
     self.description().==(another_list.description()).&((self.id()).==(another_list.id()))
+  end
+
+  define_method(:add_task) do |task|
+    @tasks.push(task)
   end
 end

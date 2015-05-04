@@ -37,4 +37,22 @@ describe(List) do
       expect(list1).to(eq(list2))
     end
   end
+
+  describe("#tasks") do
+    it("starts off with an empty array of tasks") do
+      list = List.new({:description => "Epicodus stuff", :id => nil})
+      list.save()
+      expect(list.tasks()).to(eq([]))
+    end
+  end
+
+  describe("#add_task") do
+    it("lets you save tasks to the task list") do
+      list = List.new({:description => "Epicodus stuff", :id => nil})
+      list.save()
+      task = Task.new({:description => "learn SQL", :list_id => 1})
+      list.add_task(task)
+      expect(list.tasks()).to(eq([task]))
+    end
+  end
 end
