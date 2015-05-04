@@ -50,7 +50,7 @@ describe(List) do
     it("lets you save tasks to the task list") do
       list = List.new({:description => "Epicodus stuff", :id => nil})
       list.save()
-      task = Task.new({:description => "learn SQL", :list_id => 1})
+      task = Task.new({:description => "learn SQL", :list_id => 1, :due_date => '2015-05-01'})
       list.add_task(task)
       expect(list.tasks()).to(eq([task]))
     end
